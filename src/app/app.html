@@ -8,75 +8,11 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <style>
-  :host {
-    --bright-blue: oklch(51.01% 0.274 263.83);
-    --electric-violet: oklch(53.18% 0.28 296.97);
-    --french-violet: oklch(47.66% 0.246 305.88);
-    --vivid-pink: oklch(69.02% 0.277 332.77);
-    --hot-red: oklch(61.42% 0.238 15.34);
-    --orange-red: oklch(63.32% 0.24 31.68);
-
-    --gray-900: oklch(19.37% 0.006 300.98);
-    --gray-700: oklch(36.98% 0.014 302.71);
-    --gray-400: oklch(70.9% 0.015 304.04);
-
-    --red-to-pink-to-purple-vertical-gradient: linear-gradient(
-      180deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
-
-    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(
-      90deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
-
-    --pill-accent: var(--bright-blue);
-
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1 {
-    font-size: 3.125rem;
-    color: var(--gray-900);
-    font-weight: 500;
-    line-height: 100%;
-    letter-spacing: -0.125rem;
-    margin: 0;
-    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-  }
-
-  p {
-    margin: 0;
-    color: var(--gray-700);
-  }
-
-  main {
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    box-sizing: inherit;
-    position: relative;
-  }
-
-  .angular-logo {
+  /* .angular-logo {
     max-width: 9.2rem;
-  }
+  } */
 
-  .content {
+  /*.content {
     display: flex;
     justify-content: space-around;
     width: 100%;
@@ -129,9 +65,9 @@
 
   .pill:hover {
     background: color-mix(in srgb, var(--pill-accent) 15%, transparent);
-  }
+  }*/
 
-  .pill-group .pill:nth-child(6n + 1) {
+  /* .pill-group .pill:nth-child(6n + 1) {
     --pill-accent: var(--bright-blue);
   }
   .pill-group .pill:nth-child(6n + 2) {
@@ -139,15 +75,15 @@
   }
   .pill-group .pill:nth-child(6n + 3) {
     --pill-accent: var(--french-violet);
-  }
+  } */
 
-  .pill-group .pill:nth-child(6n + 4),
+  /* .pill-group .pill:nth-child(6n + 4),
   .pill-group .pill:nth-child(6n + 5),
   .pill-group .pill:nth-child(6n + 6) {
     --pill-accent: var(--hot-red);
-  }
+  } */
 
-  .pill-group svg {
+  /* .pill-group svg {
     margin-inline-start: 0.25rem;
   }
 
@@ -165,9 +101,9 @@
 
   .social-links a:hover svg path {
     fill: var(--gray-900);
-  }
+  } */
 
-  @media screen and (max-width: 650px) {
+  /* @media screen and (max-width: 650px) {
     .content {
       flex-direction: column;
       width: max-content;
@@ -179,13 +115,15 @@
       background: var(--red-to-pink-to-purple-horizontal-gradient);
       margin-block: 1.5rem;
     }
-  }
+  } */
 </style>
-
-<main class="main">
-  <div class="content">
-    <div class="left-side">
-      <svg
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- <main class="main"> -->
+<!-- <main> -->
+<!-- <div class="content"> -->
+<!-- <div> -->
+<!-- <div> -->
+<!-- <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 982 239"
         fill="none"
@@ -229,12 +167,48 @@
           </linearGradient>
           <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
         </defs>
-      </svg>
-      <h1>Hello, {{ title() }}</h1>
-      <p>Congratulations! Your app is running. 🎉</p>
-    </div>
-    <div class="divider" role="separator" aria-label="Divider"></div>
-    <div class="right-side">
+      </svg> -->
+<div class="title-head">
+  <div>
+    <table>
+      <tr>
+        <td>
+          <h1>{{ title() }}</h1>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <ul class="ul-div">
+      <!-- <li routerLink="/home">Home</li>
+      <li routerLink="/aboutus">About us</li>
+      <li routerLink="/service">Service</li>
+      <li routerLink="/gallery">Gallery</li>
+      <li routerLink="/contactus">Contact us</li> -->
+
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/aboutus">About us</a></li>
+      <li><a routerLink="/service">Service</a></li>
+      <!-- <li><a routerLink="/service">Rooms</a></li> -->
+      <li class="dropdown">
+        <a href="javascript:void(0)">Rooms ▾</a>
+        <ul class="dropdown-content">
+          <li><a routerLink="/room/categories">Categories</a></li>
+          <li><a routerLink="/room/floors">Floors</a></li>
+          <li><a routerLink="/room/rooms">Rooms</a></li>
+        </ul>
+      </li>
+      <li><a routerLink="/gallery">Gallery</a></li>
+      <li><a routerLink="/contactus">Contact us</a></li>
+      <li><a routerLink="/booking">Booking</a></li>
+       <li><a routerLink="/contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+<!-- </div> -->
+
+<!-- <div class="divider" role="separator" aria-label="Divider"></div> -->
+<!-- <div class="right-side">
       <div class="pill-group">
         @for (item of [
           { title: 'Explore the Docs', link: 'https://angular.dev' },
@@ -326,9 +300,9 @@
           </svg>
         </a>
       </div>
-    </div>
-  </div>
-</main>
+    </div> -->
+<!-- </div> -->
+<!-- </main> -->
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
@@ -338,5 +312,24 @@
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
+<router-outlet></router-outlet>
 
-<router-outlet />
+<div class="contact-info">
+  <table>
+    <tr>
+      <td><i class="fa-solid fa-location-dot fa-2x"></i></td>
+      <td><i class="fa-solid fa-envelope fa-2x"></i></td>
+      <td><i class="fa-solid fa-phone fa-2x"></i></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td>Email</td>
+      <td>Phone</td>
+    </tr>
+    <tr>
+      <td>Vadakkel square moozhi, East marady road arakuzha, muvattupuzha, Kerala</td>
+      <td>mysteryinfosolutions@gmail.com</td>
+      <td>+91 9447525844</td>
+    </tr>
+  </table>
+</div>

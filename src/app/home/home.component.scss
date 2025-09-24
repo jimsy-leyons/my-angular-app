@@ -1,0 +1,30 @@
+
+.image-container {
+       position: relative;
+    //   display: inline-block; position: relative;
+    width: 100%;
+    max-width: 1920px;
+    height: 880px;
+    overflow: hidden;
+}
+
+.image-container img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    transition: opacity 1s ease-in-out; 
+}
+
+.caption {
+    position: absolute;
+    bottom: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    //background: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+    color: #FFC107;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}

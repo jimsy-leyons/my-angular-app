@@ -1,0 +1,15 @@
+
+ <!-- <div>
+ <img [src]="logoPath"  alt="Logo"  width="1920" height="885">
+ </div> -->
+
+ <div class="image-container">
+  <!-- <img [src]="logoPath" alt="Logo" width="1920" height="880" /> -->
+   <!-- <img [src]="images[currentIndex]" alt="Slideshow" width="1920" height="880" /> -->
+  <img *ngIf="images.length > 0" [src]="images[currentIndex]"  [alt]="'Slideshow ' + (currentIndex + 1)"  width="1920" height="880" />
+
+  <div class="caption">
+    stay with us, feel like family
+  </div>
+</div>
+

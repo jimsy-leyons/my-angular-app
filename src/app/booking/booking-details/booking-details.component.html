@@ -1,0 +1,42 @@
+<main class="main">
+  <div class="form-container">
+    <div class="right-side">
+      <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div>
+          <table>
+            <tr>
+              <td colspan="2">
+                <h2>Booking Details</h2>
+              </td>
+            </tr>
+            <tr>
+              <td>Check-in date</td>
+              <td>
+                <input id="dob" name="dob" type="date" class="my-textbox" />
+              </td>
+            </tr>
+            <tr>
+              <td>check-out date</td>
+            </tr>
+            <tr>
+              <td>No.of guest</td>
+            </tr>
+            <tr>
+              <td>Room</td>
+            </tr>
+          </table>
+        </div>
+
+        <div>
+          <table>
+            <tr>
+              <td>
+                <button type="submit" class="my-btn">search</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

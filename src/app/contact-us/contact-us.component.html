@@ -1,0 +1,116 @@
+<main class="main">
+<div class="form-container">
+  <div class="right-side">
+    <!-- <form #form="ngForm" (ngSubmit)="form.valid&&onsubmit()"> -->
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <div>
+        <table>
+          <tr>
+            <td><label for="firstName">First Name <span class="required">*</span></label></td>
+          </tr>
+          <tr>
+            <!-- <td><input id="firstName" type="text" class="my-textbox form-control" ngModel required/></td> -->
+            <td><input id="firstName" name="firstName" type="text" class="my-textbox form-control"
+                [(ngModel)]="data.firstName" #firstName="ngModel" required />
+              <!-- <label class="text-danger" *ngIf="form.submitted && firstName.errors?.['required']">First Name is
+                required</label> -->
+              <div class="text-danger" *ngIf="form.submitted && firstName.errors?.['required']">
+                First Name is required
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="lastName">Last Name <span class="required">*</span></label></td>
+          </tr>
+          <tr>
+            <td><input id="lastName" name="lastName" type="text" class="my-textbox form-control"
+                [(ngModel)]="data.lastName" #lastName="ngModel" required />
+              <!-- <label class="text-danger" *ngIf="form.submitted && lastName.errors?.['required']">Last Name is
+                required</label> -->
+              <div class="text-danger" *ngIf="form.submitted && lastName.errors?.['required']">
+                Last Name is required
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="email">Email <span class="required">*</span></label></td>
+          </tr>
+          <tr>
+            <td><input id="email" name="email" type="email" class="my-textbox form-control" [(ngModel)]="data.email"
+                #email="ngModel" required email />
+              <div class="text-danger" *ngIf="form.submitted && email.errors?.['required']">
+                Email is required
+              </div>
+              <div class="text-danger" *ngIf="form.submitted && email.errors?.['email']">
+                Enter a valid email
+              </div>
+              <!-- <label class="text-danger" *ngIf="form.submitted && email.errors?.['required']">Email is required</label>
+              <label class="text-danger" *ngIf="form.submitted && email.errors?.['email']">
+                Enter a valid email
+              </label> -->
+            </td>
+          </tr>
+          <tr>
+            <td><label for="phone">Phone</label></td>
+          </tr>
+          <!-- <tr>
+            <td style="display: flex; align-items: center;">
+              <span style="padding: 6px 10px; background: #f1f1f1; border: 1px solid #ccc; border-right: none;">+91</span>
+              <input id="phone" name="phone" type="text" class="my-textbox form-control" [(ngModel)]="data.phone"
+                #phone="ngModel" pattern="^[0-9]{10}$"  style="flex: 1; border: 1px solid #ccc; padding: 6px;" />
+              <div class="text-danger" *ngIf="form.submitted && phone.errors?.['pattern']">
+                Phone number must be exactly 10 digits
+              </div>
+            </td>
+          </tr> -->
+          <tr>
+            <td style="display: flex; align-items: center;">
+              <select [(ngModel)]="data.countryCode" name="countryCode" style="padding: 3px; border: 1px solid #ccc;">
+                <option value="+1">+1 (USA)</option>
+                <option value="+44">+44 (UK)</option>
+                <option value="+91" selected>+91 (India)</option>
+                <option value="+61">+61 (Australia)</option>
+              </select>
+              <input id="phone" name="phone" type="text" class="phone-textbox" [(ngModel)]="data.phone" #phone="ngModel"
+                pattern="^[0-9]{10}$" placeholder="Enter 10-digit phone number"
+                style="flex: 1; border: 1px solid #ccc; padding: 6px; margin-left: 5px;" />
+            </td>
+            <div class="text-danger" *ngIf="phone.invalid && phone.touched">
+              Phone must be 10 digits
+            </div>
+          </tr>
+          <tr>
+            <td><label for="message">Message</label></td>
+          </tr>
+          <tr>
+            <td><textarea id="message" class="message-textbox" type="text"></textarea></td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <table>
+          <tr>
+            <td>
+              <button type="submit" class="my-btn">Submit</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </div>
+  </div>
+
+   <!-- <div class="image-container">
+      <img src="/assets/images/contact-3.jpg" alt="Contact Illustration" />
+    </div> -->
+</main>
+
+<!-- ✅ Second image BELOW the cover section -->
+<div class="below-image">
+  <img src="/assets/images/contact-3.jpg" alt="Contact Us Extra" />
+   <div class="quote-text">
+   Your journey into the Mystery Garden begins with a simple hello. Contact us through the form, email, or phone—let’s plan your perfect visit together.
+  </div>
+</div>
+

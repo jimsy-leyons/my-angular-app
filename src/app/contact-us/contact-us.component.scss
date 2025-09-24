@@ -1,0 +1,123 @@
+.my-btn {
+  padding: 10px 20px;
+  /* background-color: #dd0031;  */
+  background-color: #0000FF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 15px;
+}
+
+.my-btn:hover {
+  background-color: #b30026;
+}
+
+main {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: inherit;
+  position: relative;
+  background-image: url('/assets/images/contact-1.jpg');
+  /* your image path */
+  background-size: cover;
+  /* make image cover full area */
+  background-position: center;
+  /* center the image */
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  /* full page height */
+}
+
+/* Second image below */
+.below-image {
+  text-align: center;
+  /* center the image */
+  // margin-top: 0px;
+  padding: 20px;
+  position: relative;
+}
+
+.below-image img {
+  max-width: 600px;
+  width: 100%;
+  // border-radius: 10px;
+  // box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.quote-text {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  // background: rgba(0, 0, 0, 0.5);
+  /* semi-transparent background */
+  color: #000000;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-size: 22px;
+  font-style: italic;
+  max-width: 30%;
+  /* don’t let it cover entire image */
+}
+
+.form-container {
+  background: #ffffff;
+  /* white background */
+  padding: 20px 30px;
+  border-radius: 10px;
+  /* rounded corners */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  /* soft shadow */
+  max-width: 500px;
+  width: 100%;
+}
+
+.my-textbox {
+  width: 400px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.phone-textbox {
+  width: 250px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.my-textbox:focus {
+  border-color: #673ab7;
+  box-shadow: 0 0 5px rgba(103, 58, 183, 0.6);
+}
+
+.message-textbox {
+  width: 400px;
+  height: 50px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.required {
+  color: red;
+  font-weight: bold;
+}
+
+
+.text-danger {
+  color: red;
+  font-size: 13px;
+  margin-top: 2px;
+  display: block;
+}

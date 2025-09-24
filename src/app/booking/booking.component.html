@@ -1,0 +1,210 @@
+<main class="main">
+  <div class="form-container">
+    <div class="right-side">
+      <!-- <form #form="ngForm" (ngSubmit)="form.valid&&onsubmit()"> -->
+      <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div>
+          <table>
+            <tr>
+              <td>
+                <h2>Customer Details</h2>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="firstName">First Name <span class="required">*</span></label>
+              </td>
+            </tr>
+            <tr>
+              <!-- <td><input id="firstName" type="text" class="my-textbox form-control" ngModel required/></td> -->
+              <td>
+                <input
+                  id="firstName"
+                  name="firstName"
+                  type="text"
+                  class="my-textbox form-control"
+                  [(ngModel)]="data.firstName"
+                  #firstName="ngModel"
+                  required
+                />
+
+                <div class="text-danger" *ngIf="form.submitted && firstName.errors?.['required']">
+                  First Name is required
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="lastName">Last Name <span class="required">*</span></label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                  class="my-textbox form-control"
+                  [(ngModel)]="data.lastName"
+                  #lastName="ngModel"
+                  required
+                />
+
+                <div class="text-danger" *ngIf="form.submitted && lastName.errors?.['required']">
+                  Last Name is required
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="email">Email <span class="required">*</span></label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  class="my-textbox form-control"
+                  [(ngModel)]="data.email"
+                  #email="ngModel"
+                  required
+                  email
+                />
+                <div class="text-danger" *ngIf="form.submitted && email.errors?.['required']">
+                  Email is required
+                </div>
+                <div class="text-danger" *ngIf="form.submitted && email.errors?.['email']">
+                  Enter a valid email
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="phone">Phone</label> <span class="required">*</span></td>
+            </tr>
+            <tr>
+              <td style="display: flex; align-items: center">
+                <select
+                  [(ngModel)]="data.countryCode"
+                  name="countryCode"
+                  style="padding: 3px; border: 1px solid #ccc"
+                >
+                  <option value="+1">+1 (USA)</option>
+                  <option value="+44">+44 (UK)</option>
+                  <option value="+91" selected>+91 (India)</option>
+                  <option value="+61">+61 (Australia)</option>
+                </select>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="text"
+                  class="phone-textbox"
+                  [(ngModel)]="data.phone"
+                  #phone="ngModel"
+                  pattern="^[0-9]{10}$"
+                  maxlength="10"
+                  (keypress)="allowOnlyNumbers($event)"
+                  (paste)="blockPaste($event)"
+                  placeholder="Enter 10-digit phone number"
+                  style="flex: 1; border: 1px solid #ccc; padding: 6px; margin-left: 5px"
+                  required
+                />
+              </td>
+              <div class="text-danger" *ngIf="form.submitted && phone.errors?.['required']">
+                Phone number is required
+              </div>
+              <div class="text-danger" *ngIf="phone.invalid && phone.touched">
+                Phone must be 10 digits
+              </div>
+            </tr>
+            <tr>
+              <td><label for="altphone">Phone (optional)</label></td>
+            </tr>
+            <tr>
+              <td style="display: flex; align-items: center">
+                <select
+                  [(ngModel)]="data.countryCode"
+                  name="altcountryCode"
+                  style="padding: 3px; border: 1px solid #ccc"
+                >
+                  <option value="+1">+1 (USA)</option>
+                  <option value="+44">+44 (UK)</option>
+                  <option value="+91" selected>+91 (India)</option>
+                  <option value="+61">+61 (Australia)</option>
+                </select>
+                <input
+                  id="altphone"
+                  name="altphone"
+                  type="text"
+                  class="phone-textbox"
+                  [(ngModel)]="data.altphone"
+                  #altphone="ngModel"
+                  pattern="^[0-9]{10}$"
+                  placeholder="Enter 10-digit phone number"
+                  style="flex: 1; border: 1px solid #ccc; padding: 6px; margin-left: 5px"
+                />
+              </td>
+              <div class="text-danger" *ngIf="altphone.invalid && altphone.touched">
+                Phone must be 10 digits
+              </div>
+            </tr>
+            <tr>
+              <td><label for="address">Address</label></td>
+            </tr>
+            <tr>
+              <td><textarea id="address" class="message-textbox" type="text"></textarea></td>
+            </tr>
+          </table>
+        </div>
+
+        <div>
+          <table>
+            <tr>
+              <td>
+                <button type="submit" class="my-btn">Next</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+
+<div class="row">
+  <div class="col">
+    <h3>Contacts</h3>
+    @if (isLoadingContacts()) {
+    <div class="col-12">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    } @else { @if (contacts.length > 0) {
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (contact of contacts; track contact._id) {
+        <tr>
+          <td>{{ contact.first_name }}</td>
+          <td>{{ contact.last_name }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.wa_id }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    } @else {
+    <div class="alert alert-info" role="alert">No contacts available.</div>
+    } }
+  </div>
+</div>
