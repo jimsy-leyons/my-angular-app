@@ -47,14 +47,19 @@ export class ContactdetailsComponent {
   //     });
   // }
 
-    onSubmit(form: NgForm) {
+  onSubmit(form: NgForm) {
     if (form.valid) {
       let dataformvalue = form.value;
 
       console.log(dataformvalue);
 
+      const updatedContact = {
+        ...this.contact, // existing contact fields
+        updated_at: formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'en'), // current datetime
+      };
+
       this.contactService
-        .update(this.contact._id, this.contact)
+        .update(this.contact._id, updatedContact)
         .subscribe((dataResponse: IResponse<IContacts>) => {
           if (dataResponse.status) {
             console.log('Contact update successfully', dataResponse.data);
@@ -63,7 +68,6 @@ export class ContactdetailsComponent {
             console.error('Error update contact', dataResponse.error);
           }
         });
-
     } else {
       let messages: string[] = [];
 
@@ -74,36 +78,37 @@ export class ContactdetailsComponent {
   }
 
   onDelete(contact: IContacts) {
-  if (confirm(`Are you sure you want to delete ${contact.first_name} ${contact.last_name}?`)) {
-    this.contactService
-   //   this.contactService.softDelete(contact?._id as number).subscribe((dataResponse: IResponse<any>) => {
-       this.contactService.delete(contact._id as number) .subscribe((dataResponse: IResponse<any>) => {
-       if (dataResponse.status) {
-       // this.dataSource.splice(index,1);
-         // console.log('Contact deleted successfully');
-          alert('Contact deleted successfully');
-          this.contact = null; // clear from view after delete
-        } else {
-       //   console.error('Delete failed:', dataResponse.error);
-          alert('Failed to delete contact');
-        }
-      });
+    if (confirm(`Are you sure you want to delete ${contact.first_name} ${contact.last_name}?`)) {
+      this.contactService;
+      //   this.contactService.softDelete(contact?._id as number).subscribe((dataResponse: IResponse<any>) => {
+      this.contactService
+        .delete(contact._id as number)
+        .subscribe((dataResponse: IResponse<any>) => {
+          if (dataResponse.status) {
+            // this.dataSource.splice(index,1);
+            // console.log('Contact deleted successfully');
+            alert('Contact deleted successfully');
+            this.contact = null; // clear from view after delete
+          } else {
+            //   console.error('Delete failed:', dataResponse.error);
+            alert('Failed to delete contact');
+          }
+        });
+    }
   }
-}
 
-// onDelete(contact: IContacts,index:number) {
-//     this.actionService.confirm("Room category", "Are you sure you want to delete this room category?", 'error').subscribe((result) => {
-//       if (result.isConfirmed) {
-//         this.recordService.softDelete(metaData?.id as number).subscribe((dataResponse: IResponse<any>) => {
-//           if (dataResponse.status) {
-//             this.dataSource.splice(index,1);
-//             this.autoToastrService.notifySuccess("Room category deleted successfully", "Room category");
-//           } else {
-//             this.autoToastrService.notifyError("Failed to delete room category", "Room category");
-//           }
-//         })
-//       }
-//     })
-//   }
-
+  // onDelete(contact: IContacts,index:number) {
+  //     this.actionService.confirm("Room category", "Are you sure you want to delete this room category?", 'error').subscribe((result) => {
+  //       if (result.isConfirmed) {
+  //         this.recordService.softDelete(metaData?.id as number).subscribe((dataResponse: IResponse<any>) => {
+  //           if (dataResponse.status) {
+  //             this.dataSource.splice(index,1);
+  //             this.autoToastrService.notifySuccess("Room category deleted successfully", "Room category");
+  //           } else {
+  //             this.autoToastrService.notifyError("Failed to delete room category", "Room category");
+  //           }
+  //         })
+  //       }
+  //     })
+  //   }
 }
