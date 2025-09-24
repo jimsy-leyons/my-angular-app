@@ -70,7 +70,6 @@ export class ContactdetailsComponent {
         });
     } else {
       let messages: string[] = [];
-
       if (messages.length > 0) {
         alert(messages.join('\n'));
       }
