@@ -1,8 +1,10 @@
 
 
 <div class="row">
-  <div class="col">
+  <div class="col-12">
+     <div class="card">
     <h3>Contacts</h3>
+     <div class="card-body">
     @if (isLoadingContacts()) {
     <div class="col-12">
       <div class="spinner-border text-primary" role="status">
@@ -29,7 +31,7 @@
           <td>{{ contact.wa_id }}</td>
           <td>
              <!-- <button class="btn btn-sm btn-primary me-2" (click)="onEdit(contact)"> Edit</button> -->
-             <button class="btn btn-sm btn-primary me-2" (click)="onEdit(contact)"> Edit</button>
+             <button class="btn btn-sm btn-primary me-2" (click)="onEdit(contact)"><i class="fa fa-edit"></i>Edit</button>
             <!-- <button class="btn btn-sm btn-danger" (click)="onDelete(contact._id)">
               Delete
             </button> -->
@@ -41,6 +43,8 @@
     } @else {
     <div class="alert alert-info" role="alert">No contacts available.</div>
     } }
+    </div>
+  </div>
   </div>
 </div>
 

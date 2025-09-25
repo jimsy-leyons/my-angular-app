@@ -14,9 +14,12 @@
   </div>
 </div> -->
 
+<!-- <form #form="ngForm" (ngSubmit)="onSubmit(form)"> -->
 <form #form="ngForm" (ngSubmit)="onSubmit(form)">
   <div class="row">
-    <div class="col">
+    <div class="col-12">
+        <div class="card">
+      <div class="card-body">
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -36,8 +39,8 @@
             <td>{{ contact.wa_id }}</td>
             <td>
               <!-- <button class="btn btn-sm btn-primary me-2" (click)="onEdit(contact)">Edit</button> -->
-              <button class="btn btn-sm btn-primary me-2">Edit</button>
-              <button class="btn btn-sm btn-danger" (click)="onDelete(contact)">Delete</button>
+              <button class="btn btn-sm btn-primary me-2"><i class="fa fa-edit"></i>Edit</button>
+              <button class="btn btn-sm btn-danger" (click)="onDelete(contact)"> <i class="fa fa-trash"></i>Delete</button>
             </td>
           </tr>
           } @else {
@@ -47,74 +50,102 @@
           }
         </tbody>
       </table>
+      </div>
+      </div>
+    </div>
+  </div>
+
+    <h3> Contact Details</h3>
+  <div class="row">
+    <div class="col-12">
+        <div class="card">
+      <div class="card-body">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          id="firstName"
+          name="firstName"
+          class="form-control"
+          type="text"
+          [(ngModel)]="contact.first_name"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input
+          id="lastName"
+          name="lastName"
+          class="form-control"
+          type="text"
+          [(ngModel)]="contact.last_name"
+        />
+      </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="col">
-      <table>
-        <tr>
-          <td><label for="firstName">First Name</label></td>
-          <td>
-            <input
-              id="firstName"
-              name="firstName"
-              class="form-control"
-              type="text"
-              [(ngModel)]="contact.first_name"
-            />
-          </td>
-        </tr>
-        <tr>
-          <td><label for="lastName">Last Name</label></td>
-          <td>
-            <input
-              id="lastName"
-              name="lastName"
-              class="form-control"
-              type="text"
-              [(ngModel)]="contact.last_name"
-            />
-          </td>
-        </tr>
-        <tr>
-          <td><label for="email">Email</label></td>
-          <td>
-            <input
-              id="email"
-              name="email"
-              class="form-control"
-              type="email"
-              [(ngModel)]="contact.email"
-            />
-          </td>
-        </tr>
-        <tr>
-          <td><label for="phone">Phone</label></td>
-          <td>
-            <input
-              id="phone"
-              name="phone"
-              class="form-control"
-              type="text"
-              [(ngModel)]="contact.wa_id"
-            />
-          </td>
-        </tr>
-        <tr>
-          <td><label for="country">country</label></td>
-          <td>
-            <select
-              id="country"
-              name="country"
-              class="form-control"
-              [(ngModel)]="contact.countries__id"
-            >
-              <option [value]="contact._id">{{ contact.CountryName }}</option>
-            </select>
-          </td>
-        </tr>
-      </table>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          class="form-control"
+          type="email"
+          [(ngModel)]="contact.email"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input
+          id="phone"
+          name="phone"
+          class="form-control"
+          type="text"
+          [(ngModel)]="contact.wa_id"
+        />
+      </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="country">country</label>
+        <!-- <select  id="country" name="country"  class="form-control"
+              [(ngModel)]="contact.countries__id"  >
+              <option [value]="contact._id">{{ contact.CountryName }}</option>
+            </select> -->
+
+        <ng-select
+          class="form-control"
+          [(ngModel)]="contact.countries__id"
+          name="mcountry"
+          (search)="searchCountry($event)"
+          [loading]="isLoadingCountry"
+          [items]="country"
+          bindLabel="name"
+          bindValue="_id"
+        >
+        </ng-select>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+      <button class="btn btn-sm btn-primary me-2"><i class="fa fa-edit"></i>Details</button>
+      </div>
+      </div>
+  </div>
+
+   </div>
+      </div>
+    </div>
+  </div>
+
 </form>
