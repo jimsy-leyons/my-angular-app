@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContactComponent } from './contact/contact.component';
- import { EditComponent } from './contact/edit/edit.component';
+// import { EditComponent } from './contact/edit/edit.component';
+//import { DetailsModalComponent } from './details-modal/details-modal.component';
 
 @Component({
   selector: 'app-root',

@@ -1,50 +1,73 @@
+<div class="page-bg">
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-10">
+    <div class="card shadow-sm bg-white rounded-3">
+      <!-- <h3>Contacts</h3> -->
+      <!-- <h4 class="text-black text-center mb-3">Contacts</h4> -->
+       <h4 class="text-black">Contacts</h4>
+      <div class="card-body p-5">
 
+        <div *ngIf="isLoadingContacts()" class="col-12 text-center my-3">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
 
-<div class="row">
-  <div class="col-12">
-     <div class="card">
-    <h3>Contacts</h3>
-     <div class="card-body">
-    @if (isLoadingContacts()) {
-    <div class="col-12">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
+        <div *ngIf="!isLoadingContacts()">
+          <table
+            *ngIf="recordDetails.length > 0"
+            class="table table-hover align-middle table-bordered border-outer-only bg-white"
+          >
+            <thead class="table-light">
+              <tr>
+                <th scope="col" style="width: 40px">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col" style="width: 190px">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let contact of paginatedContacts; let i = index">
+                <td>{{ i + 1 + (pageIndex - 1) * pageSize }}</td>
+                <td (click)="viewDetails(contact)" style="cursor: pointer">
+                  {{ contact.first_name }}
+                </td>
+                <td (click)="viewDetails(contact)" style="cursor: pointer">{{ contact.last_name }}</td>
+                <td (click)="viewDetails(contact)" style="cursor: pointer">{{ contact.email }}</td>
+                <td (click)="viewDetails(contact)" style="cursor: pointer">{{ contact.wa_id }}</td>
+                <td>
+                  <button class="btn btn-sm btn-primary me-2" (click)="onEdit(contact)">
+                    <i class="fa fa-edit"></i> Edit
+                  </button>
+                  <button class="btn btn-sm btn-danger" (click)="onDelete(contact)">
+                    <i class="fa fa-trash"></i> Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div *ngIf="recordDetails.length > pageSize" class="mt-3">
+            <ngb-pagination
+              class="d-flex justify-content-end"
+              [maxSize]="5"
+              [collectionSize]="resultsLength"
+              [pageSize]="pageSize"
+              [(page)]="pageIndex"
+              (pageChange)="pageChanged()"
+            >
+            </ngb-pagination>
+          </div>
+
+          <div *ngIf="recordDetails.length === 0" class="alert alert-info my-3" role="alert">
+            No contacts available.
+          </div>
+        </div>
       </div>
     </div>
-    } @else { @if (recordDetails.length > 0) {
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (contact of recordDetails; track contact._id) {
-        <tr>
-          <td>{{ contact.first_name }}</td>
-          <td>{{ contact.last_name }}</td>
-          <td>{{ contact.email }}</td>
-          <td>{{ contact.wa_id }}</td>
-          <td>
-             <!-- <button class="btn btn-sm btn-primary me-2" (click)="onEdit(contact)"> Edit</button> -->
-             <button class="btn btn-sm btn-primary me-2" (click)="onEdit(contact)"><i class="fa fa-edit"></i>Edit</button>
-            <!-- <button class="btn btn-sm btn-danger" (click)="onDelete(contact._id)">
-              Delete
-            </button> -->
-          </td>
-        </tr>
-        }
-      </tbody>
-    </table>
-    } @else {
-    <div class="alert alert-info" role="alert">No contacts available.</div>
-    } }
-    </div>
-  </div>
   </div>
 </div>
-
+</div>

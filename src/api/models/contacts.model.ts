@@ -13,6 +13,7 @@ export class Contacts {
   phone_verified_at?: any;
   email?: string;
   email_verified_at?: any;
+  vendorName?: string;
   vendors__id?: number;
   wa_id?: string;
   language_code?: string;
@@ -29,11 +30,13 @@ export class ContactsFilter extends Filter {
   created_at?: any;
   first_name?: string;
   last_name?: string;
+  CountryName?: string;
   countries__id?: number;
   whatsapp_opt_out?: number;
   phone_verified_at?: any;
   email?: string;
   email_verified_at?: any;
+  vendorName?: string;
   vendors__id?: number;
   wa_id?: string;
   language_code?: string;

@@ -2,7 +2,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { App } from './app';
 import { NewPageComponent } from './new-page/new-page.component';
-import { HomePageComponent } from './home/home.component'
+import { HomePageComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { AboutusComponent } from './about-us/about-us.component';
 import { ContactusComponent } from './contact-us/contact-us.component';
@@ -15,6 +15,7 @@ import { BookingComponent } from './booking/booking.component';
 import { BookingdetailsComponent } from './booking/booking-details/booking-details.component';
 import { ContactComponent } from './contact/contact.component';
 import { ContactdetailsComponent } from './contact/contact-details/contact-details.component';
+import { DetailsContactComponent } from './contact/detail-contact/detail-contact.component';
 
 export const routes: Routes = [
   // { path: '', component: App },
@@ -34,14 +35,15 @@ export const routes: Routes = [
       { path: 'booking', component: BookingComponent },
       { path: 'booking/booking-details', component: BookingdetailsComponent },
       { path: 'contact', component: ContactComponent },
-       { path: 'contact/contact-details', component: ContactdetailsComponent },
-      { path: '', redirectTo: 'home', pathMatch: 'full' }
-    ]
-  }
+      { path: 'contact/contact-details', component: ContactdetailsComponent },
+      { path: 'contact/detail-contact/:id', component: DetailsContactComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+    ],
+  },
 ];
 
-// @NgModule({
-//   imports: [RouterModule.forRoot(routes)],
-//   exports: [RouterModule]
-// })
-export class AppRoutingModule { }
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}

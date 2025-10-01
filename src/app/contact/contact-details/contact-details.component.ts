@@ -15,12 +15,13 @@ import { ICountries } from '@api/interfaces/countries.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 //import { AutotoastrService } from '@mis/services/autotoastr.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-contact-details',
   standalone: true,
   // imports: [RouterOutlet],
-  imports: [CommonModule, FormsModule,  NgSelectModule ],
+  imports: [CommonModule, FormsModule, NgSelectModule],
   templateUrl: './contact-details.component.html',
   styleUrls: ['./contact-details.component.scss'],
 })
@@ -28,9 +29,9 @@ export class ContactdetailsComponent {
   contact: any;
   dataSource: IContacts[] = [];
 
-   //dataForm: FormGroup;
+  //dataForm: FormGroup;
   isLoadingCountry = false;
-   // isLoadingContacts = signal(false);
+  // isLoadingContacts = signal(false);
 
   country: ICountries[] = [];
 
@@ -38,7 +39,8 @@ export class ContactdetailsComponent {
     private router: Router,
     private contactService: ContactsService,
     private countryService: CountriesService,
-        private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
+    private modalService: NgbModal
   ) {
     const navigation = this.router.getCurrentNavigation();
     this.contact = navigation?.extras?.state?.['contact']; // retrieve data
@@ -77,7 +79,7 @@ export class ContactdetailsComponent {
 
   async getCountries(search = '') {
     this.isLoadingCountry = true;
-  // this.isLoadingCountry.set(true);
+    // this.isLoadingCountry.set(true);
     let filter: CountriesFilter = {
       search: search,
       searchColumns: '_id,name',
@@ -90,12 +92,12 @@ export class ContactdetailsComponent {
         if (dataResponse?.status) {
           this.country = dataResponse?.data?.records as ICountries[];
           this.setFieldValue(this.country as any[], 'mcountry', '_id', 'mcountry_id');
-        //  if (this.contact?.mcountry_id) {
-        //   this.contact.mcountry = this.contact.mcountry_id;
-        // }
+          //  if (this.contact?.mcountry_id) {
+          //   this.contact.mcountry = this.contact.mcountry_id;
+          // }
         }
         this.isLoadingCountry = false;
-      // this.isLoadingCountry.set(false);
+        // this.isLoadingCountry.set(false);
       });
   }
 
@@ -123,26 +125,26 @@ export class ContactdetailsComponent {
   // }
 
   setFieldValue(
-  records: any[],
-  fieldName: string,
-  columnName: string,
-  recordFilterName: string,
-  disableField = false
-) {
-  if (this.contact && records?.length > 0) {
-    let selectedRecord = records.find(
-      (item) => item?.[columnName] == this.contact?.[recordFilterName]
-    );
+    records: any[],
+    fieldName: string,
+    columnName: string,
+    recordFilterName: string,
+    disableField = false
+  ) {
+    if (this.contact && records?.length > 0) {
+      let selectedRecord = records.find(
+        (item) => item?.[columnName] == this.contact?.[recordFilterName]
+      );
 
-    if (selectedRecord) {
-      this.contact[fieldName] = selectedRecord; // ngModel binds this to <ng-select>
+      if (selectedRecord) {
+        this.contact[fieldName] = selectedRecord; // ngModel binds this to <ng-select>
+      }
+
+      // if (disableField) {
+      //   this.contact[`${fieldName}_disabled`] = true;
+      // }
     }
-
-    // if (disableField) {
-    //   this.contact[`${fieldName}_disabled`] = true;
-    // }
   }
-}
 
   onSubmit(form: NgForm) {
     if (form.valid) {
@@ -207,4 +209,5 @@ export class ContactdetailsComponent {
   //       }
   //     })
   //   }
+
 }

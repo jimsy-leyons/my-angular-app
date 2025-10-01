@@ -1,5 +1,61 @@
-h3 {
+h4 {
+  display: flex;
+  justify-content: center;   /* horizontal center */
+  align-items: center;       /* vertical center */
   margin-bottom: 10px;
-  text-align: center;
+  height: 50px;              /* set height so vertical centering is visible */
 }
 
+ .border-outer-only {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #dee2e6; /* outer border */
+  }
+
+  .border-outer-only th,
+  .border-outer-only td {
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #dee2e6; /* horizontal lines */
+     padding: 0.3rem 0.5rem; /* reduce padding for compactness */
+    font-size: 0.85rem; /* smaller font */
+  }
+
+  .border-outer-only th:first-child,
+  .border-outer-only td:first-child {
+    border-left: 1px solid #dee2e6; /* left outer border */
+  }
+
+  .border-outer-only th:last-child,
+  .border-outer-only td:last-child {
+    border-right: 1px solid #dee2e6; /* right outer border */
+  }
+
+  .border-outer-only thead th {
+    border-top: 1px solid #dee2e6;
+  }
+
+  .border-outer-only tbody tr:last-child td {
+    border-bottom: 1px solid #dee2e6; /* bottom border */
+  }
+
+  /* Compact row height */
+  .compact-row td {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  /* Reduce button height in Action column */
+  .btn-sm {
+    font-size: 0.75rem;
+  }
+
+  .page-bg {
+  background-color: #ffe4e6; /* light rose */
+  min-height: 100vh; /* full height */
+  padding: 30px; /* space around content */
+}
+
+.card {
+  background-color: #ffffff; /* content white */
+}
